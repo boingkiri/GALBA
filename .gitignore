@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+
+# Datasets (downloaded automatically, see README)
+data/*
+!data/imagenet_100/
+data/imagenet_100/*
+!data/imagenet_100/imagenet100_label.yaml
+
+# Run directories, logs and checkpoints
+generative_active_learning_*/
+outputs/
+wandb/
+lightning_logs/
+checkpoints/
+*.ckpt
+*.pt

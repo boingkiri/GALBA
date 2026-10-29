@@ -1,0 +1,50 @@
+defaults:
+  - target_model: classification/vit_b
+  - generative_oracle: imagenette
+  - guidance_model: no_guidance
+  - dataset: imagenette
+  - train: imagenette_DP_step_25000
+  - callbacks: classification_DP
+  - _self_
+
+project_name: generative_active_learning
+exp_name: imagenette_no_guidance
+
+seed: [42]
+deterministic: true
+profiler: simple
+load_best_checkpoint: false
+logger_type: wandb # csv, wandb
+
+num_initial_labeled_real_samples: 0 # number of real data
+num_initial_labeled_generated_samples: 3200 # number of generated data used as the initial labeled set
+
+train:
+  batch_size: 128
+  mixed_precision: true
+  ema:
+    enabled: true
+    decay: 0.999
+    update_after_step: 0
+  mixup_alpha: 0.5
+  cutmix_alpha: 1.0
+  increasing_val_freq: true
+  optimizer:
+    lr: 0.0001
+
+callbacks:
+  early_stopping:
+    patience: 10
+
+dataset:
+  num_holdout_samples: 1600
+  generated_data_for_holdout: true
+  selected_by_clip_score: true
+
+generative_oracle:
+  num_generated_sample_per_cycle: 1600
+  batch_size: 2
+  inference_steps: 50
+  mixed_precision: true
+  scheduler:
+    name: euler

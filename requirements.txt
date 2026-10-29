@@ -1,0 +1,22 @@
+# Tested with Python 3.10 and CUDA 12.8
+torch==2.7.1
+torchvision==0.22.1
+lightning==2.5.2
+torchmetrics==1.7.4
+diffusers==0.34.0
+transformers==4.56.2
+accelerate==1.13.0
+hydra-core==1.3.2
+omegaconf==2.3.0
+datasets==4.1.0
+einops==0.8.1
+wandb
+webdataset==1.0.2
+numpy
+pillow
+pyyaml
+tqdm
+
+# Only needed on Cloud TPU (ImageNet-100 runs used TPU VMs)
+# torch_xla[tpu]
+# google-cloud-storage

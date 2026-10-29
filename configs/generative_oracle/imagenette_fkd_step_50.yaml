@@ -1,0 +1,25 @@
+dataset_name: imagenette
+pretrained_model: "stable-diffusion-v1-5/stable-diffusion-v1-5"
+guidance_type: "fkd"
+
+diffusion_model_type: "epsilon"
+noise_scheduler_type: "ddpm"
+
+num_generated_sample_per_cycle: 1600
+batch_size: 2
+img_size: 224
+
+inference_steps: 50
+freedom_guidance_scale: 0.05
+guidance_scale: 3
+
+fkd_args:
+  lmbda: 2.0
+  num_particles: 4
+  adaptive_resampling: True
+  potential_type: 'max'
+  resample_frequency: 10
+  time_steps: 50
+  resampling_t_start: 10
+  resampling_t_end: 40
+  use_smc: True

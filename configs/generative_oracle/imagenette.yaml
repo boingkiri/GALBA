@@ -1,0 +1,15 @@
+dataset_name: imagenette
+pretrained_model: "stable-diffusion-v1-5/stable-diffusion-v1-5"
+guidance_type: "gradient"
+
+diffusion_model_type: "epsilon"
+noise_scheduler_type: "ddpm"
+
+num_generated_sample_per_cycle: 160
+batch_size: 2
+img_size: 224
+
+inference_steps: 30
+
+freedom_guidance_scale: 0.05
+guidance_scale: 3

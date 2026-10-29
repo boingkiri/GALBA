@@ -1,0 +1,24 @@
+batch_size: 64
+gradient_accumulation_steps: 1
+optimizer:
+  name: "adamw"
+  lr: 0.003
+lr_scheduler:
+  name: "sequential"
+  schedulers:
+    [
+      {name: "linear", start_factor: 0.1, end_factor: 1.0, total_iters: 5000},
+      {name: "constant", factor: 1.0},
+      {name: "cosine", T_max: 10000, eta_min: 1e-5}
+    ]
+  milestones: [5000, 40000]
+  interval: "step"
+ema:
+  enabled: true
+  decay: 0.999
+  update_after_step: 0
+
+num_workers: 4
+
+max_steps: 50000
+label_smoothing: 0.11

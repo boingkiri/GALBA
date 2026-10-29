@@ -1,0 +1,18 @@
+model_checkpoint:
+  monitor: "val_accuracy"
+  mode: "max"
+  save_top_k: 1
+  filename: "{epoch:02d}-{val_accuracy:.2f}"
+  # save_last: true
+  save_last: false # to check the speed difference
+
+early_stopping:
+  monitor: "val_accuracy"
+  mode: "max"
+  # patience: 10
+  # min_delta: 0.01
+  patience: 6
+  min_delta: 0.0
+
+learning_rate_monitor:
+  logging_interval: null

@@ -1,0 +1,25 @@
+name: imagenette
+
+dataset_path: data/imagenette/
+
+num_classes: 10
+transform:
+  train:
+    - totensor: {}
+    - random_resized_crop:
+        size: 224
+    - normalize:
+        mean: [0.485, 0.456, 0.406]
+        std: [0.229, 0.224, 0.225]
+  test:
+    - totensor: {}
+    - resize:
+        size: 256
+    - center_crop:
+        size: 224
+    - normalize:
+        mean: [0.485, 0.456, 0.406]
+        std: [0.229, 0.224, 0.225]
+
+# The normalization values are based on 
+#https://github.com/danielchyeh/ImageNet-100-Pytorch/blob/5ae5a42f74a23e8107aa060067fc355f16007d91/main_IN100.py#L113
